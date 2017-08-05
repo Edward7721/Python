@@ -4,31 +4,26 @@ We have two sorted lists, and we want to write a function to merge the two lists
 a = [3, 4, 6, 10, 11, 18]
 b = [1, 5, 7, 12, 13, 19, 21]
 '''
-
 def merge(a,b):
-    len_a = len(a)
-    len_b = len(b)
-    a_b = []
-    j = 0
-    i = 0
-    while True:
-        if (a[i]<b[j]):
-            a_b.append(a[i])
-            i += 1
-            if i == len_a:
-                a_b.extend(b[j:])
-                break
+    lena=len(a)
+    lenb=len(b)
+    ab=[]
+    i, j =0, 0
+    while (i<lena and j<lenb):
+        if(a[i]<b[j]):
+            ab.append(a[i])
+            print(ab)
+            i+=1
         else:
-            a_b.append(b[j])
-            j += 1
-            if j == len_b:
-                a_b.extend(a[i:])
-                break
-    return a_b
+            ab.append(b[j])
+            print(ab)
+            j+=1
 
-a = [3, 4, 6, 10, 11, 18]
-b = [1, 5, 7, 12, 13, 19, 21]
+    if(i<lenb):
+        ab.extend(b[j:lenb])
+    if(j<lena):
+        ab.extend(a[i:lena])
 
+    print (ab)
 
-a_b = merge(a,b)
-print (a_b)
+merge(a,b)
