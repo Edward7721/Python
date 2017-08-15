@@ -116,8 +116,10 @@ def do_sort(list_to_sort, sort_key):
               "averageRating": "_volumeInfo_averageRating",
               "rating count": "_volumeInfo_ratingsCount", "published date": "_volumeInfo_publishedDate",
               "pageCount": "_volumeInfo_pageCount", "id":"_id"}
-
-    newlist = sorted(list_to_sort, key=lambda k: k[sortBy[sort_key]])
+    header = sortBy[sort_key]
+    #remove items with not existed sorted key. Example: price is "NOT_FOR_SALE"
+    filtered_list= [d for d in list_to_sort if  header in d.keys()]
+    newlist = sorted(filtered_list, key=lambda k: k[header])
     return  newlist
 
 
@@ -145,20 +147,20 @@ def flow1():
         elif var == '3':
             break
 
-flow1()
+#flow1()
 
 #debug
 def flow2():
-    key = 'kaka'
+    key = 'Anna'
     lib = Lib()
     mydic = {}
-    mydic = api_request.getBooks(key,'2')
+    mydic = api_request.getBooks(key,'5')
     lib.addBooks(key, mydic )
-    key = 'papa'
-    mydic1 = api_request.getBooks(key,'2')
+    key = 'Hanna'
+    mydic1 = api_request.getBooks(key,'5')
     lib.addBooks(key, mydic1)
     one_list = lib.getBooksByKey(key)
     all = lib.getAllBooks()
-    do_csv(all,"c://temp/66.csv", "id")
+    do_csv(all,"c://temp/66.csv", "price")
 
-#flow2()
+flow2()
