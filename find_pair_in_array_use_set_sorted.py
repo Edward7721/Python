@@ -15,16 +15,9 @@ def pair(arr, sum):
            if a[i] + a[j] == sum:
                 print("found:", a[i], a[j])
 
-
-
-def isExist(res,pair):
-   reverse =[]
-   if res.count(pair)==1:
-      return True
-   reverse.append(pair[1])
-   reverse.append(pair[0])
-   if res.count(reverse)==1:
-       return True
-   return False
-
 pair(arr, 10)
+
+# found: 0 10
+# found: 2 8
+# found: 12 -2
+# found: 15 -5
