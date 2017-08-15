@@ -1,5 +1,6 @@
 
 import requests
+import json
 
 
 
@@ -8,6 +9,7 @@ def doRequst(key,num):
     return r
 
 def getJSON(responce):
+    #mdic= json.dumps(responce.json(), indent=2)
     mdic = responce.json()
     return mdic
 
